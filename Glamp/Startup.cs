@@ -12,6 +12,9 @@ using Glamp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Data;
+using MySql.Data.MySqlClient;
+using Glamp.Models;
 
 namespace Glamp
 {
@@ -34,6 +37,14 @@ namespace Glamp
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<IDbConnection>((s) =>
+            {
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("recgov"));
+                conn.Open();
+                return conn;
+            });
+            services.AddTransient<IFavoritesRepository, FavoritesRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

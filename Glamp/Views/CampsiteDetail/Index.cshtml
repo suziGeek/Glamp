@@ -1,5 +1,87 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CampsiteDetail
+@using System.Web
+
+@using System
+@using System.Xml
+
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<IdentityUser> UserManager
+
+
+
+
+<style>
+    .product-container {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+</style>
+
 @{
+    ViewData["Title"] = "Campsite Details";
 }
+
+
+
+<style>
+    .product-container {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+</style>
+
+@{
+    ViewData["Title"] = "Campsite Details";
+}
+
+
+
+<div class="container-fluid">
+    <div class="container" style="width:75%">
+        <div class="product-container">
+            <p>@Model.facility</p>
+            <ul>
+
+                @{
+                    if (@Model.alert == null)
+                    {
+                        <li class="alert">@Html.Raw(HttpUtility.HtmlDecode(Model.alert))</li>
+                    }
+
+                    <li class="description">@Html.Raw(HttpUtility.HtmlDecode(Model.description))</li>
+
+                    if (@Model.drivingDirections != null)
+                    {
+                        <li class="driving-directions">@Html.Raw(HttpUtility.HtmlDecode(Model.drivingDirections))</li>
+                    }
+
+                }
+
+            </ul>
+
+            <div class="btn-div">
+                @{
+                    var user = Context.User.Identity.Name;
+                }
+                @if (user == null)
+                {<a class="btn btn-outline-success" asp-area="Identity" asp-page="/Account/Login">Login to add to Favorites</a> }
+                else
+                {
+                    @using (Html.BeginForm("InsertFavoriteToDatabase", "Favorites", "Post"))
+                    {
+                        <input type="hidden" asp-for="facility" value="@Model.facility" />
+                        <input type="hidden" asp-for="facilityID" value="@Model.facilityID" />
+                        <input type="hidden" asp-for="user" value="@user" />
+                        <input type="submit" class="btn btn-outline-success" value="Add to favorites" />
+                    }
+                }
+
+            </div>
+
+            <a href=@Model.fullReservationUrl>Make reservation</a>
+        </div>
+    </div>
+</div>
+
+
+

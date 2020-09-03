@@ -1,8 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using System
+@using System.Xml
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+@model Campgrounds
+
+    <style>
+        .product-container {
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="container" style="width:75%">
+            <div class="product-container">
+
+                @{var campId = "50032"; }
+                Check out this campsite!
+                <a class="navbar-brand" asp-area="" asp-route-campId=@campId asp-controller="CampsiteDetail" asp-action="Index">Campsite Detail</a>
+
+
+                @using (Html.BeginForm("Index", "Campgrounds", FormMethod.Post))
+                {
+                    <b>Select State: </b>
+
+                    @Html.DropDownList("SelectState", new SelectList(Enum.GetValues(typeof(Campgrounds.States))), "--Select State--")
+                    <input type="submit" value="submit" />
+                }
+                </div>
+            </div>
+    </div>

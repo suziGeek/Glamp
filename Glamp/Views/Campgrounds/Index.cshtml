@@ -1,4 +1,135 @@
-﻿@page
-@model Glamp.Views.Campgrounds.IndexModel
-@{
-}
+﻿@using System
+@using System.Xml
+@model List<Campgrounds>
+
+
+<div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+    <!-- Mask & flexbox options-->
+    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+        <!-- Content -->
+
+        <div class="container">
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+                <!--Grid column-->
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="container-md text-center text-md-center" style="margin-top:100px;">
+
+                <!--Card-->
+                <!--Card content-->
+                <div class="card-body" id="myDiv" style="width:100%;height:500px;">
+
+
+                    <!-- Map -->
+                    <script type="text/javascript">
+
+                                // This example displays a marker at the center of Australia.
+                                // When the user clicks the marker, an info window opens.
+                                function initMap() {
+                                    var shape = "http://maps.google.com/mapfiles/kml/pal2/icon2.png";
+
+                                    const map = new google.maps.Map(document.getElementById("myDiv"), {
+                                        zoom: 8,
+                                        center: { lat: 39.6336111, lng: -82.8747222  }
+                                    });
+
+                                    var infowindow = new google.maps.InfoWindow({
+                                        size: new google.maps.Size(50, 50) // too small
+                                    });
+
+                                    function makeInfoWindow(marker, content) {
+                                        google.maps.event.addListener(marker, 'click', function () {
+                                            infowindow.setContent(content);
+                                            infowindow.open(map, marker);
+                                        });
+                                    }
+
+                                    @foreach (var item in Model)
+                                    {
+                                             <text>
+
+                                        var marker = new google.maps.Marker({
+                                                    position: { lat: @item.Latitude, lng: @item.Longitude },
+                                                    map: map,
+                                            title: '@item.FacilityName',
+                                            icon: shape,
+
+                                        });
+
+                                    makeInfoWindow(marker, '<a class="navbar-brand" asp-area="" asp-route-campId=@item.FacilityID asp-route-contractId=@item.ContractID asp-controller="CampsiteDetail" asp-action="Index">@item.FacilityName</a><br>Learn More');
+
+                                            </text>   }
+                                    }
+/*----------------------------------------------------------------------------*/
+
+
+
+
+                    </script>
+
+                    <!-- Form -->
+
+                </div>
+
+            </div>
+            <!--/.Card-->
+            @*<button onclick="toggle_visibility('list')" formtarget="#list"> Click here for list view</button>*@
+            <a href="#list" class="btn btn-outline-success warning-color" onclick="toggle_visibility('list')">List View</a>
+        </div>
+        <!--Grid column-->
+        <!--Grid row-->
+
+    </div>
+    <!-- Content -->
+
+</div>
+<!-- Mask & flexbox options-->
+</div>
+
+
+<div class="container-fluid" style="margin-top: 200px; display:flex; justify-content:center;" id="list">
+    <div class="conatainer-sm align-content-center" style="width: 75%">
+
+        <table class="table">
+            <tr><th><h2>Campgrounds</h2></th></tr>
+            <tr>
+
+                <th>Name</th>
+                <th>Longitude</th>
+                <th>Latidtude</th>
+                <td>contractID</td>
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.FacilityName </td>
+                    <td>@item.Longitude</td>
+                    <td>@item.Latitude</td>
+                    <td>@item.ContractID</td>
+
+                    <td>
+                        @*<a class="btn btn-outline-success" href=/Product/ViewProduct/@product.facilityID>Learn More</a>*@
+
+                        <a class="navbar-brand" asp-area="" asp-route-campId=@item.FacilityID asp-route-contractId=@item.ContractID asp-controller="CampsiteDetail" asp-action="Index">Campsite Detail</a>
+
+                    </td>
+
+
+
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>
