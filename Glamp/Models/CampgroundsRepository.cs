@@ -34,7 +34,7 @@ namespace Glamp.Models
                                       facilityID = x.Attribute("facilityID").Value,
                                       state = x.Attribute("state").Value,
                                       latitude = decimal.Parse(x.Attribute("latitude").Value),
-                                      longitude = decimal.Parse(x.Attribute("latitude").Value),
+                                      longitude = decimal.Parse(x.Attribute("longitude").Value),
                                       contractID = x.Attribute("contractID").Value,
                                   }).ToList<Campgrounds>();
 

@@ -134,17 +134,7 @@ namespace Glamp.Models
                 };
 
         public Dictionary<string, string> selectActivity { get; set; }
-        public enum Activity
-        {
-            RVSites = 2001,
-            Cabins = 10001,
-            Tent = 2003,
-            Trailer = 2002,
-            GroupSite = 9002,
-            DayUse = 9001,
-            HorseSite = 3001,
-            BoatSite = 2004
-        };
+        
 
         [BindProperty]
         public States selectState { get; set; }

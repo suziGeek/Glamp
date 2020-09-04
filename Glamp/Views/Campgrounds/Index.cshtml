@@ -2,7 +2,7 @@
 @using System.Xml
 @using Glamp.Models
 @using Microsoft.AspNetCore.Identity
-
+@model List<Campgrounds>
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -30,24 +30,35 @@
                 <!--Card-->
                 <!--Card content-->
                 <div class="card-body" id="myDiv" style="width:100%;height:500px;">
+                    @{ List<Campgrounds> campgrounds = new List<Campgrounds>();}
 
+                    @{ foreach (var item in Model)
+                        { campgrounds.Add(item); } }
+                    @{var length = campgrounds.Count;}
+                    @{ var arrCampgrounds = campgrounds.ToArray();}
+                    @{ var length2 = arrCampgrounds.Length;}
 
                     <!-- Map -->
                     <script type="text/javascript">
 
-                                // This example displays a marker at the center of Australia.
+
                                 // When the user clicks the marker, an info window opens.
-                                function initMap() {
+                        function initMap() {
+
+                                    var bounds = new google.maps.LatLngBounds();
+                                       
                                     var shape = "http://maps.google.com/mapfiles/kml/pal2/icon2.png";
 
                                                 const map = new google.maps.Map(document.getElementById("myDiv"), {
-                                        zoom: 8,
-                                        center: { lat: 39.6336111, lng: -82.8747222  }
+                                                //zoom: 8,
+                                                //center: { lat: 39.6336111, lng: -82.8747222  }
                                                 });
 
                                         var infowindow = new google.maps.InfoWindow({
                                         size: new google.maps.Size(50, 50) // too small
-                                    });
+                                        });
+
+                                    
 
                                     function makeInfoWindow(marker, content) {
                                         google.maps.event.addListener(marker, 'click', function () {
@@ -68,9 +79,14 @@
 
                                         });
 
+                                    //input marker postions to set the bounding box for centering map. 
+                                    bounds.extend(marker.position);
+
                                     makeInfoWindow(marker, '<a class="navbar-brand" asp-area="" asp-route-campId=@item.facilityID asp-route-contractId=@item.contractID asp-controller="CampsiteDetail" asp-action="Index">@item.FacilityName</a><br>Learn More');
 
                                             </text>   }
+                                        //creates a zoom and centering based off of marker locations
+                                        map.fitBounds(bounds);
                                     }
 /*----------------------------------------------------------------------------*/
 
@@ -96,7 +112,7 @@
 
 </div>
 <!-- Mask & flexbox options-->
-</div>
+
 
 
 <div class="container-fluid" style="margin-top: 200px; display:flex; justify-content:center;" id="list">
@@ -105,7 +121,7 @@
         <table class="table">
             <tr><th><h2>Campgrounds</h2></th></tr>
             <tr>
-
+               
                 <th>Name</th>
                 <th>Longitude</th>
                 <th>Latidtude</th>
