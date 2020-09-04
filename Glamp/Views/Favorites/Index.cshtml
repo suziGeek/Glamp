@@ -1,28 +1,49 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<Favorites>
 
-    <div class="container-sm">
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<style>
+    .product-container {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        display: flex;
+        justify-content: center;
+    }
+</style>
 
+
+
+<div class="container-fluid product-container align-content-center">
+    <div class="align-content-center" style="width: 75%">
         <h2>Favorite Campsites</h2>
 
-        <div> this is favorites</div>
 
-
-        <table class="table">
+        <table class="table align-content-center">
             <tr>
                 <th>Name</th>
                 <th>ID</th>
-                <th>User</th>
+
 
             </tr>
 
-            @foreach (var Favorite in Model)
+            @foreach (var favorite in Model)
             {
                 <tr>
-                    <td> @Favorite.CampsiteName</td>
-                    <td>@Favorite.campID</td>
-                    <td>@Favorite.user</td>
+                    <td> @favorite.CampsiteName</td>
+                    <td>@favorite.campID</td>
+
+                    <td>
+                        @using (Html.BeginForm("DeleteFavorite", "Favorites", "Post"))
+                        {
+                            <input type="hidden" asp-for="@favorite.campID" value="@favorite.campID" />
+                            <input type="hidden" asp-for="@favorite.user" value="@favorite.user" />
+                            <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete Favorite" />
+                        }
+                    </td>
                 </tr>
 
             }
         </table>
     </div>
+</div>>

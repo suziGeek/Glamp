@@ -9,5 +9,6 @@ namespace Glamp.Models
     {
         public void InsertFavorite(string facilityID, string facilityName, string user);
         public IEnumerable<Favorites> GetAllFavorites(string user);
+        public void DeleteFavorite(Favorites favorite);
     }
 }

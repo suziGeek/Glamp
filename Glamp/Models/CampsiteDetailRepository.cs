@@ -18,8 +18,8 @@ namespace Glamp.Models
             _client = client;
         }
 
-        private List<CampsiteDetail> allCampDetails;
-        private XElement CampData;
+        //private List<CampsiteDetail> allCampDetails;
+        //private XElement CampData;
 
         public static CampsiteDetail LoadFromXMLString(string xmlText)
         {

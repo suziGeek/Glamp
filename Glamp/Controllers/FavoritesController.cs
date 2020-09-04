@@ -33,6 +33,14 @@ namespace Glamp.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult DeleteFavorite(Favorites favorite)
+        {
+            repo.DeleteFavorite(favorite);
+
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }

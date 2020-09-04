@@ -36,6 +36,13 @@ namespace Glamp.Models
 
         }
 
+        public void DeleteFavorite(Favorites favorite)
+        {
+            _conn.Execute("DELETE FROM favorites WHERE campId = @campID AND user = @user;",
+                                       new { user = favorite.user, campId = favorite.campID });
+
+        }
+
 
 
 

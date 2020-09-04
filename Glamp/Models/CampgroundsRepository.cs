@@ -24,6 +24,7 @@ namespace Glamp.Models
             var campResponse = _client.GetStringAsync(campUrl).Result;
 
             XDocument xml = XDocument.Parse(campResponse);
+            //if theres only one result resultset is not a node - only result is - so throws an error...need to fix.
             List<Campgrounds> nodeList = xml.Descendants("resultset")
                                   .Descendants("result")
                                   //.Where(x => x.Element("facilityID") != null && x.Element("facilityID") != null)
