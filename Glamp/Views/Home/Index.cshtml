@@ -23,10 +23,13 @@
                 @using (Html.BeginForm("Index", "Campgrounds", FormMethod.Post))
                 {
                     <b>Select State: </b>
+                    // @Html.DropDownList("SelectActivity", new SelectList(Dictionary<string, string>.GetValues(typeof(Campgrounds.activityDictionary))), "--Select Activity--")
+
+                    @Html.DropDownListFor(m => m.selectActivity, new SelectList(Model.activityDictionary, "Value", "Key"))
 
                     @Html.DropDownList("SelectState", new SelectList(Enum.GetValues(typeof(Campgrounds.States))), "--Select State--")
                     <input type="submit" value="submit" />
                 }
-                </div>
+            </div>
             </div>
     </div>

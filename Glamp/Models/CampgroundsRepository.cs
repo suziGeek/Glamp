@@ -16,10 +16,11 @@ namespace Glamp.Models
             _client = client;
         }
 
-        public List<Campgrounds> GetCampgrounds(string selectState)
+        public List<Campgrounds> GetCampgrounds(string selectState, string selectActivity)
         {
+            //http://api.amp.active.com/camping/campgrounds/?pstate={selectState}&siteType=3001&api_key=hcgj5x79d9wren68k2pj5nv9
 
-            string campUrl = $"http://api.amp.active.com/camping/campgrounds/?pstate={selectState}&siteType=3001&api_key=hcgj5x79d9wren68k2pj5nv9";
+            string campUrl = $"http://api.amp.active.com/camping/campgrounds/?pstate={selectState}&siteType={selectActivity}&api_key=hcgj5x79d9wren68k2pj5nv9";
             var campResponse = _client.GetStringAsync(campUrl).Result;
 
             XDocument xml = XDocument.Parse(campResponse);

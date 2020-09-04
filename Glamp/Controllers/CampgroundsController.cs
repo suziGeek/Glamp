@@ -10,12 +10,12 @@ namespace Glamp.Controllers
 {
     public class CampgroundsController : Controller
     {
-        public IActionResult Index(string selectState)
+        public IActionResult Index(string selectState, string selectActivity)
         {
             var client = new HttpClient();
             var quote = new CampgroundsRepository(client);
 
-            List<Campgrounds> campground = quote.GetCampgrounds(selectState);
+            List<Campgrounds> campground = quote.GetCampgrounds(selectState, selectActivity);
 
             return View(campground);
         }
