@@ -6,7 +6,24 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+    <style>
+        #myDiv {
+            height: 500px;
+            width: 100%;
+            margin: 10px;
+            padding: 10px;
+        }
+        /* Bootstrap Css Map Fix*/
+        #mainBody #map img {
+            max-width: none;
+        }
+        /* Bootstrap Css Map Fix*/
+        #mainBody #map label {
+            width: auto;
+            display: inline;
+        } 
 
+    </style>
 
 <div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
 
@@ -29,14 +46,8 @@
 
                 <!--Card-->
                 <!--Card content-->
-                <div class="card-body" id="myDiv" style="width:100%;height:500px;">
-                    @{ List<Campgrounds> campgrounds = new List<Campgrounds>();}
-
-                    @{ foreach (var item in Model)
-                        { campgrounds.Add(item); } }
-                    @{var length = campgrounds.Count;}
-                    @{ var arrCampgrounds = campgrounds.ToArray();}
-                    @{ var length2 = arrCampgrounds.Length;}
+                <div  id="myDiv">
+                   
 
                     <!-- Map -->
                     <script type="text/javascript">
@@ -50,8 +61,8 @@
                                     var shape = "http://maps.google.com/mapfiles/kml/pal2/icon2.png";
 
                                                 const map = new google.maps.Map(document.getElementById("myDiv"), {
-                                                //zoom: 8,
-                                                //center: { lat: 39.6336111, lng: -82.8747222  }
+                                                    //zoom: 8,
+                                                    //center: { lat: -33, lng: 151 },
                                                 });
 
                                         var infowindow = new google.maps.InfoWindow({
