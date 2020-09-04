@@ -1,6 +1,11 @@
 ﻿@using System
 @using System.Xml
-@model List<Campgrounds>
+@using Glamp.Models
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 
 
 <div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
@@ -35,12 +40,12 @@
                                 function initMap() {
                                     var shape = "http://maps.google.com/mapfiles/kml/pal2/icon2.png";
 
-                                    const map = new google.maps.Map(document.getElementById("myDiv"), {
+                                                const map = new google.maps.Map(document.getElementById("myDiv"), {
                                         zoom: 8,
                                         center: { lat: 39.6336111, lng: -82.8747222  }
-                                    });
+                                                });
 
-                                    var infowindow = new google.maps.InfoWindow({
+                                        var infowindow = new google.maps.InfoWindow({
                                         size: new google.maps.Size(50, 50) // too small
                                     });
 
@@ -63,7 +68,7 @@
 
                                         });
 
-                                    makeInfoWindow(marker, '<a class="navbar-brand" asp-area="" asp-route-campId=@item.FacilityID asp-route-contractId=@item.ContractID asp-controller="CampsiteDetail" asp-action="Index">@item.FacilityName</a><br>Learn More');
+                                    makeInfoWindow(marker, '<a class="navbar-brand" asp-area="" asp-route-campId=@item.facilityID asp-route-contractId=@item.contractID asp-controller="CampsiteDetail" asp-action="Index">@item.FacilityName</a><br>Learn More');
 
                                             </text>   }
                                     }
