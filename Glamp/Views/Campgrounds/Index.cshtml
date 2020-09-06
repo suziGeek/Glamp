@@ -25,7 +25,7 @@
         display: inline;
     }
     .topspace {
-       
+       padding-top:80px;
     }
     #list {
         display: flex;
@@ -37,7 +37,7 @@
 <div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
 
     <!-- Mask & flexbox options-->
-    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+    <div class="mask rgba-black-light d-flex justify-content-center align-items-center topspace">
 
         <!-- Content -->
 
@@ -46,7 +46,9 @@
             <!--Grid row-->
             <div class="container-fluid wow fadeIn ">
                 <!--DropDown Menu-->
-                <partial name="_DropDownMenu" model='new Campgrounds()'/>
+                <partial name="_DropDownMenu" model='new Campgrounds()' />
+             
+                <a href="#list" class="btn btn-success warning-color" onclick="toggle_visibility('list')">List View</a>
 
             </div>
             
@@ -120,8 +122,7 @@
 
             </div>
             <!--/.Card-->
-            @*<button onclick="toggle_visibility('list')" formtarget="#list"> Click here for list view</button>*@
-            <a href="#list" class="btn btn-outline-success warning-color" onclick="toggle_visibility('list')">List View</a>
+          
         </div>
         <!--Grid column-->
         <!--Grid row-->
@@ -132,9 +133,7 @@
 </div>
 <!-- Mask & flexbox options-->
 
-
-
-<div class="container-fluid" id="list"  >
+<div class="container-fluid" id="list">
     <div class="conatainer-sm align-content-center" style="width: 75%">
 
         <table class="table">
@@ -173,3 +172,4 @@
         </table>
     </div>
 </div>
+

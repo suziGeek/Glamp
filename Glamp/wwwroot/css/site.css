@@ -1,7 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-/*a.navbar-brand {
+a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
@@ -16,10 +16,10 @@ for details on configuring this project to bundle and minify static web assets. 
 
 .product-container {
     padding-top: 200px;
-}*/
+}
 
 /* Provide sufficient contrast against white background */
-/*a {
+a {
   color: #0366d6;
 }
 
@@ -33,11 +33,11 @@ for details on configuring this project to bundle and minify static web assets. 
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}*/
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */
-/*html {
+html {
   font-size: 14px;
 }
 @media (min-width: 768px) {
@@ -60,28 +60,29 @@ for details on configuring this project to bundle and minify static web assets. 
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
-}*/
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */
-/*html {
+html {
   position: relative;
   min-height: 100%;
+  margin-top:150px;
 }
 
-body {*/
-  /* Margin bottom by footer height */
-  /*margin-bottom: 60px;
+body {
+   Margin bottom by footer height 
+  margin-bottom: 60px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px;*/ /* Vertically center the text there */
-/*}*/
+  line-height: 60px;  Vertically center the text there 
+}
 /*----------Google Map Styles-------------*/
-/*#map_wrapper {
+#map_wrapper {
     height: 400px;
 }
 
@@ -117,8 +118,293 @@ body {*/
     background: #1C2331 !important;
 }
 
-}*/
+}
 
 #list {
     display: none;
 }
+
+
+
+/**STYLES FROM MATERIAL BOOTSTRAP*/
+.navbar {
+    font-weight: 300;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+    .navbar form .md-form input {
+        margin: 0 5px 1px 8px;
+    }
+
+    .navbar .breadcrumb {
+        padding: 0.3rem 0 0 1rem;
+        margin: 0;
+        font-size: 15px;
+        font-weight: 300;
+        background-color: inherit;
+    }
+
+        .navbar .breadcrumb .breadcrumb-item {
+            color: #fff;
+        }
+
+            .navbar .breadcrumb .breadcrumb-item.active {
+                color: rgba(255, 255, 255, 0.65);
+            }
+
+            .navbar .breadcrumb .breadcrumb-item:before {
+                color: rgba(255, 255, 255, 0.65);
+            }
+
+    .navbar .navbar-toggler {
+        border-width: 0;
+        outline: 0;
+    }
+
+    .navbar .nav-flex-icons {
+        flex-direction: row;
+    }
+
+@media (max-width: 992px) {
+    .navbar .container {
+        width: 100%;
+    }
+
+        .navbar .container .navbar-toggler-right {
+            right: 0;
+        }
+}
+
+.navbar .nav-item .nav-link {
+    display: block;
+}
+
+    .navbar .nav-item .nav-link.disabled:active {
+        pointer-events: none;
+    }
+
+    .navbar .nav-item .nav-link .fas, .navbar .nav-item .nav-link .fab, .navbar .nav-item .nav-link .far {
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+@media (max-width: 992px) {
+    .navbar .nav-item .nav-link {
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+}
+
+.navbar .dropdown-menu {
+    position: absolute !important;
+    margin-top: 0;
+}
+
+    .navbar .dropdown-menu a {
+        padding: 10px;
+        font-size: 0.9375rem;
+        font-weight: 300;
+        color: #000;
+    }
+
+@media (max-width: 600px) {
+    .navbar .dropdown-menu form {
+        width: 17rem;
+    }
+}
+
+@media (min-width: 600px) {
+    .navbar .dropdown-menu form {
+        width: 22rem;
+    }
+}
+
+.navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+    .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled:hover {
+        color: rgba(0, 0, 0, 0.3);
+    }
+
+.navbar.navbar-light .navbar-toggler-icon {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar.navbar-light .breadcrumb .nav-item .nav-link,
+.navbar.navbar-light .navbar-nav .nav-item .nav-link {
+    color: #000;
+    transition: 0.35s;
+}
+
+    .navbar.navbar-light .breadcrumb .nav-item .nav-link:hover,
+    .navbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+.navbar.navbar-light .breadcrumb .nav-item.active > .nav-link,
+.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+    .navbar.navbar-light .breadcrumb .nav-item.active > .nav-link:hover,
+    .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link:hover {
+        color: #000;
+    }
+
+.navbar.navbar-light .navbar-toggler {
+    color: #000;
+}
+
+.navbar.navbar-light form .md-form input {
+    border-bottom: 1px solid #000;
+}
+
+    .navbar.navbar-light form .md-form input:focus:not([readonly]) {
+        border-color: #4285f4;
+    }
+
+.navbar.navbar-light form .md-form .form-control {
+    color: #000;
+}
+
+    .navbar.navbar-light form .md-form .form-control::-webkit-input-placeholder {
+        font-weight: 300;
+        color: #000;
+    }
+
+    .navbar.navbar-light form .md-form .form-control::-moz-placeholder {
+        font-weight: 300;
+        color: #000;
+    }
+
+    .navbar.navbar-light form .md-form .form-control:-ms-input-placeholder {
+        font-weight: 300;
+        color: #000;
+    }
+
+    .navbar.navbar-light form .md-form .form-control::-ms-input-placeholder {
+        font-weight: 300;
+        color: #000;
+    }
+
+    .navbar.navbar-light form .md-form .form-control::placeholder {
+        font-weight: 300;
+        color: #000;
+    }
+
+.navbar.navbar-dark .navbar-nav .nav-item .nav-link.disbled {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+    .navbar.navbar-dark .navbar-nav .nav-item .nav-link.disbled:hover {
+        color: rgba(255, 255, 255, 0.25);
+    }
+
+.navbar.navbar-dark .navbar-toggler-icon {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link,
+.navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+    color: #fff;
+    transition: 0.35s;
+}
+
+    .navbar.navbar-dark .breadcrumb .nav-item .nav-link:hover,
+    .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+.navbar.navbar-dark .breadcrumb .nav-item.active > .nav-link,
+.navbar.navbar-dark .navbar-nav .nav-item.active > .nav-link {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+    .navbar.navbar-dark .breadcrumb .nav-item.active > .nav-link:hover,
+    .navbar.navbar-dark .navbar-nav .nav-item.active > .nav-link:hover {
+        color: #fff;
+    }
+
+.navbar.navbar-dark .navbar-toggler {
+    color: #fff;
+}
+
+.navbar.navbar-dark form .md-form input {
+    border-bottom: 1px solid #fff;
+}
+
+    .navbar.navbar-dark form .md-form input:focus:not([readonly]) {
+        border-color: #4285f4;
+    }
+
+.navbar.navbar-dark form .md-form .form-control {
+    color: #fff;
+}
+
+    .navbar.navbar-dark form .md-form .form-control::-webkit-input-placeholder {
+        font-weight: 300;
+        color: #fff;
+    }
+
+    .navbar.navbar-dark form .md-form .form-control::-moz-placeholder {
+        font-weight: 300;
+        color: #fff;
+    }
+
+    .navbar.navbar-dark form .md-form .form-control:-ms-input-placeholder {
+        font-weight: 300;
+        color: #fff;
+    }
+
+    .navbar.navbar-dark form .md-form .form-control::-ms-input-placeholder {
+        font-weight: 300;
+        color: #fff;
+    }
+
+    .navbar.navbar-dark form .md-form .form-control::placeholder {
+        font-weight: 300;
+        color: #fff;
+    }
+
+@media (min-width: 600px) {
+    .navbar.scrolling-navbar {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    }
+
+        .navbar.scrolling-navbar .navbar-nav > li {
+            transition-duration: 1s;
+        }
+
+        .navbar.scrolling-navbar.top-nav-collapse {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+}
+
+
+/* Navbar animation */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.top-nav-collapse {
+    background-color: #1C2331;
+}
+
+/* Adding color to the Navbar on mobile */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #1C2331;
+    }
+}
+
+/* Footer color for sake of consistency with Navbar */
+.page-footer {
+    background-color: #1C2331;
+}
+
