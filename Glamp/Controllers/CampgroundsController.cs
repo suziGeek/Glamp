@@ -16,14 +16,14 @@ namespace Glamp.Controllers
             var client = new HttpClient();
             var quote = new CampgroundsRepository(client);
 
-            dynamic model = new ViewModel();     
-            model.CampGrounds = quote.GetCampgrounds(selectState, selectActivity);
-            model.DropDownMenu = new DropDownMenu();
+            //dynamic model = new ViewModel();     
+            //model.CampGrounds = quote.GetCampgrounds(selectState, selectActivity);
+            //model.DropDownMenu = new DropDownMenu();
            
             //model.DropDownMenu = selectActivity;
-            //ViewModel campground = quote.GetCampgrounds(selectState, selectActivity);
+           var campground = quote.GetCampgrounds(selectState, selectActivity);
 
-            return View(model);
+            return View(campground);
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿@using System
-
+@using System.Xml
+@model List<Campgrounds>
 @using Glamp.Models
-@model ViewModel
 @using Microsoft.AspNetCore.Identity
 
 @inject SignInManager<IdentityUser> SignInManager
@@ -36,27 +36,31 @@
 
             <!--Grid row-->
             <div class="row wow fadeIn">
-                <!--Grid column-->
-                <form asp-controller="Campgrounds" asp-action="Index" method="post">
-                    <select asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="DropDownMenu.selectState"></select>
+                <!--DropDown Menu-->
+                <partial name="_DropDownMenu" model='new Campgrounds()'/>
 
-                    <select asp-items="@(new SelectList(Model.DropDownMenu.activityDictionary, "Value", "Key"))" asp-for="DropDownMenu.selectActivity"></select><br /><br />
+                @*@await Html.PartialAsync("_DropDownMenu", Model)*@
 
-                    <input type="submit" value="Submit" />
-                </form>
+                @*<form asp-controller="Campgrounds" asp-action="Index" method="post">
+            <select asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="DropDownMenu.selectState"></select>
 
-              
+            <select asp-items="@(new SelectList(Model.DropDownMenu.activityDictionary, "Value", "Key"))" asp-for="DropDownMenu.selectActivity"></select><br /><br />
+
+            <input type="submit" value="Submit" />
+        </form>*@
+
+
 
                 @*@using (Html.BeginForm("Index", "Campgrounds", FormMethod.Post))
-                {
-                    <b>Select State: </b>
-                    // @Html.DropDownList("SelectActivity", new SelectList(Dictionary<string, string>.GetValues(typeof(Campgrounds.activityDictionary))), "--Select Activity--")
+        {
+            <b>Select State: </b>
+            // @Html.DropDownList("SelectActivity", new SelectList(Dictionary<string, string>.GetValues(typeof(Campgrounds.activityDictionary))), "--Select Activity--")
 
-                    // @Html.DropDownListFor((DropDownMenu)(menu) => { (DropDownMenu)menu.DropDownMenu.selectActivity}, new SelectList(Model.DropDownMenu.activityDictionary, "Value", "Key"))
+            // @Html.DropDownListFor((DropDownMenu)(menu) => { (DropDownMenu)menu.DropDownMenu.selectActivity}, new SelectList(Model.DropDownMenu.activityDictionary, "Value", "Key"))
 
-                    @Html.DropDownList("SelectState", new SelectList(Enum.GetValues(typeof(DropDownMenu.States))), "--Select State--")
-                    <input type="submit" value="submit" />
-                }*@
+            @Html.DropDownList("SelectState", new SelectList(Enum.GetValues(typeof(DropDownMenu.States))), "--Select State--")
+            <input type="submit" value="submit" />
+        }*@
 
 
 
@@ -99,7 +103,7 @@
                                         });
                                     }
 
-                                    @foreach (var item in Model.CampGrounds)
+                                    @foreach (var item in Model)
                                     {
                                              <text>
 
@@ -162,7 +166,7 @@
 
             </tr>
 
-            @foreach (var item in Model.CampGrounds)
+            @foreach (var item in Model)
             {
                 <tr>
 

@@ -1,0 +1,13 @@
+﻿@using System
+@using System.Xml
+@model Campgrounds
+@using Glamp.Models;
+
+
+<form asp-controller="Campgrounds" asp-action="Index" method="post">
+    <select asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="selectState"></select>
+
+    <select asp-items="@(new SelectList(Model.activityDictionary, "Value", "Key"))" asp-for="selectActivity  "></select><br /><br />
+
+    <input type="submit" value="Submit" />
+</form>
