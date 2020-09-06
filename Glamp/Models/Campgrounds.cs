@@ -120,7 +120,7 @@ namespace Glamp.Models
         public string fullReservationUrl { get; set; }
 
 
-        public  Dictionary<string, string> activityDictionary = new Dictionary<string, string>
+        public Dictionary<string, string> activityDictionary = new Dictionary<string, string>
                 {
 
                   {  "RVSites","2001" },
@@ -134,68 +134,68 @@ namespace Glamp.Models
                 };
 
         public Dictionary<string, string> selectActivity { get; set; }
-        
+
 
         [BindProperty]
         public States selectState { get; set; }
 
-            public enum States
-            {
-                AL,
-                AZ,
-                AR,
-                CA,
-                CO,
-                CT,
-                DC,
-                DE,
-                FL,
-                GA,
-                HI,
-                ID,
-                IL,
-                IN,
-                IA,
-                KS,
-                KY,
-                LA,
-                ME,
-                MD,
-                MA,
-                MI,
-                MN,
-                MS,
-                MO,
-                MT,
-                NE,
-                NV,
-                NH,
-                NJ,
-                NM,
-                NY,
-                NC,
-                ND,
-                OH,
-                OK,
-                OR,
-                PA,
-                RI,
-                SC,
-                SD,
-                TN,
-                TX,
-                UT,
-                VT,
-                VA,
-                WA,
-                WV,
-                WI,
-                WY
-            };
+        public enum States
+        {
+            AL,
+            AZ,
+            AR,
+            CA,
+            CO,
+            CT,
+            DC,
+            DE,
+            FL,
+            GA,
+            HI,
+            ID,
+            IL,
+            IN,
+            IA,
+            KS,
+            KY,
+            LA,
+            ME,
+            MD,
+            MA,
+            MI,
+            MN,
+            MS,
+            MO,
+            MT,
+            NE,
+            NV,
+            NH,
+            NJ,
+            NM,
+            NY,
+            NC,
+            ND,
+            OH,
+            OK,
+            OR,
+            PA,
+            RI,
+            SC,
+            SD,
+            TN,
+            TX,
+            UT,
+            VT,
+            VA,
+            WA,
+            WV,
+            WI,
+            WY
+        };
 
 
 
-        }
+    }
 
 
     }

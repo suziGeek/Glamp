@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -15,9 +16,15 @@ namespace Glamp.Controllers
             var client = new HttpClient();
             var quote = new CampgroundsRepository(client);
 
-            List<Campgrounds> campground = quote.GetCampgrounds(selectState, selectActivity);
+            dynamic model = new ViewModel();     
+            model.CampGrounds = quote.GetCampgrounds(selectState, selectActivity);
+            model.DropDownMenu = new DropDownMenu();
+           
+            //model.DropDownMenu = selectActivity;
+            //ViewModel campground = quote.GetCampgrounds(selectState, selectActivity);
 
-            return View(campground);
+            return View(model);
         }
+
     }
 }

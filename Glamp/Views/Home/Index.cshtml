@@ -2,7 +2,7 @@
 @using System.Xml
 
 
-@model Campgrounds
+@model ViewModel
 
     <style>
         .product-container {
@@ -20,16 +20,32 @@
                 <a class="navbar-brand" asp-area="" asp-route-campId=@campId asp-controller="CampsiteDetail" asp-action="Index">Campsite Detail</a>
 
 
-                @using (Html.BeginForm("Index", "Campgrounds", FormMethod.Post))
-                {
-                    <b>Select State: </b>
-                    // @Html.DropDownList("SelectActivity", new SelectList(Dictionary<string, string>.GetValues(typeof(Campgrounds.activityDictionary))), "--Select Activity--")
+                @*@using (Html.BeginForm("Index", "Campgrounds", FormMethod.Post))
+        {
+            <b>Select State: </b>
+            // @Html.DropDownList("SelectActivity", new SelectList(Dictionary<string, string>.GetValues(typeof(Campgrounds.activityDictionary))), "--Select Activity--")
 
-                    @Html.DropDownListFor(m => m.selectActivity, new SelectList(Model.activityDictionary, "Value", "Key"))
+            @Html.DropDownListFor(m => m.selectActivity, new SelectList(Model.activityDictionary, "Value", "Key"))
 
-                    @Html.DropDownList("SelectState", new SelectList(Enum.GetValues(typeof(Campgrounds.States))), "--Select State--")
-                    <input type="submit" value="submit" />
-                }
+            @Html.DropDownList("SelectState", new SelectList(Enum.GetValues(typeof(Campgrounds.States))), "--Select State--")
+            <input type="submit" value="submit" />
+        }*@
+                @*<form asp-controller="Campgrounds" asp-action="Index" method="post">
+            <select asp-items="@(new SelectList(Enum.GetValues(typeof(Campgrounds.States))))" asp-for="selectState"></select>
+
+            <select asp-items="@(new SelectList(Model.activityDictionary, "Value", "Key"))" asp-for="selectActivity  "></select><br /><br />
+
+            <input type="submit" value="Submit" />
+        </form>*@
+
+                <form asp-controller="Campgrounds" asp-action="Index" method="post">
+                    <select asp-items="@(new SelectList(Enum.GetValues(typeof(Campgrounds.States))))" asp-for="DropDownMenu.selectState"></select>
+
+                    <select asp-items="@(new SelectList(Model.DropDownMenu.activityDictionary, "Value", "Key"))" asp-for="DropDownMenu.selectActivity  "></select><br /><br />
+
+                    <input type="submit" value="Submit" />
+                    </form>
+
             </div>
             </div>
     </div>

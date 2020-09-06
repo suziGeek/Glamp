@@ -1,29 +1,29 @@
 ﻿@using System
-@using System.Xml
+
 @using Glamp.Models
+@model ViewModel
 @using Microsoft.AspNetCore.Identity
-@model List<Campgrounds>
+
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-    <style>
-        #myDiv {
-            height: 500px;
-            width: 100%;
-            margin: 10px;
-            padding: 10px;
-        }
-        /* Bootstrap Css Map Fix*/
-        #mainBody #map img {
-            max-width: none;
-        }
-        /* Bootstrap Css Map Fix*/
-        #mainBody #map label {
-            width: auto;
-            display: inline;
-        } 
-
-    </style>
+<style>
+    #myDiv {
+        height: 500px;
+        width: 100%;
+        margin: 10px;
+        padding: 10px;
+    }
+    /* Bootstrap Css Map Fix*/
+    #mainBody #map img {
+        max-width: none;
+    }
+    /* Bootstrap Css Map Fix*/
+    #mainBody #map label {
+        width: auto;
+        display: inline;
+    }
+</style>
 
 <div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
 
@@ -36,8 +36,29 @@
 
             <!--Grid row-->
             <div class="row wow fadeIn">
-
                 <!--Grid column-->
+                <form asp-controller="Campgrounds" asp-action="Index" method="post">
+                    <select asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="DropDownMenu.selectState"></select>
+
+                    <select asp-items="@(new SelectList(Model.DropDownMenu.activityDictionary, "Value", "Key"))" asp-for="DropDownMenu.selectActivity"></select><br /><br />
+
+                    <input type="submit" value="Submit" />
+                </form>
+
+              
+
+                @*@using (Html.BeginForm("Index", "Campgrounds", FormMethod.Post))
+                {
+                    <b>Select State: </b>
+                    // @Html.DropDownList("SelectActivity", new SelectList(Dictionary<string, string>.GetValues(typeof(Campgrounds.activityDictionary))), "--Select Activity--")
+
+                    // @Html.DropDownListFor((DropDownMenu)(menu) => { (DropDownMenu)menu.DropDownMenu.selectActivity}, new SelectList(Model.DropDownMenu.activityDictionary, "Value", "Key"))
+
+                    @Html.DropDownList("SelectState", new SelectList(Enum.GetValues(typeof(DropDownMenu.States))), "--Select State--")
+                    <input type="submit" value="submit" />
+                }*@
+
+
 
             </div>
             <!--Grid column-->
@@ -46,8 +67,8 @@
 
                 <!--Card-->
                 <!--Card content-->
-                <div  id="myDiv">
-                   
+                <div id="myDiv">
+
 
                     <!-- Map -->
                     <script type="text/javascript">
@@ -57,7 +78,7 @@
                         function initMap() {
 
                                     var bounds = new google.maps.LatLngBounds();
-                                       
+
                                     var shape = "http://maps.google.com/mapfiles/kml/pal2/icon2.png";
 
                                                 const map = new google.maps.Map(document.getElementById("myDiv"), {
@@ -69,7 +90,7 @@
                                         size: new google.maps.Size(50, 50) // too small
                                         });
 
-                                    
+
 
                                     function makeInfoWindow(marker, content) {
                                         google.maps.event.addListener(marker, 'click', function () {
@@ -78,7 +99,7 @@
                                         });
                                     }
 
-                                    @foreach (var item in Model)
+                                    @foreach (var item in Model.CampGrounds)
                                     {
                                              <text>
 
@@ -90,7 +111,7 @@
 
                                         });
 
-                                    //input marker postions to set the bounding box for centering map. 
+                                    //input marker postions to set the bounding box for centering map.
                                     bounds.extend(marker.position);
 
                                     makeInfoWindow(marker, '<a class="navbar-brand" asp-area="" asp-route-campId=@item.facilityID asp-route-contractId=@item.contractID asp-controller="CampsiteDetail" asp-action="Index">@item.FacilityName</a><br>Learn More');
@@ -132,7 +153,7 @@
         <table class="table">
             <tr><th><h2>Campgrounds</h2></th></tr>
             <tr>
-               
+
                 <th>Name</th>
                 <th>Longitude</th>
                 <th>Latidtude</th>
@@ -141,7 +162,7 @@
 
             </tr>
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.CampGrounds)
             {
                 <tr>
 
