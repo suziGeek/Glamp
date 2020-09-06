@@ -4,10 +4,22 @@
 @using Glamp.Models;
 
 
-<form asp-controller="Campgrounds" asp-action="Index" method="post">
-    <select asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="selectState"></select>
+<style>
+    #ddmenu{
+        display:flex;
+       
+    }
 
-    <select asp-items="@(new SelectList(Model.activityDictionary, "Value", "Key"))" asp-for="selectActivity  "></select><br /><br />
+</style>
+    <div class="form-group" id="ddmenu">
+        
+            <form asp-controller="Campgrounds" asp-action="Index" method="post">
+               
+                    <select class="custom-select" asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="selectState"></select>
 
-    <input type="submit" value="Submit" />
-</form>
+                    <select class="custom-select" asp-items="@(new SelectList(Model.activityDictionary, "Value", "Key"))" asp-for="selectActivity  "></select>
+                
+                <input class="form-control form-control-sm" type="submit" value="Submit" />
+            </form>
+        </div>
+        

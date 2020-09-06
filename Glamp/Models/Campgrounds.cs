@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Web.Mvc.Controls;
+
 using System;
-using System.Collections;
+
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace Glamp.Models
@@ -14,8 +10,6 @@ namespace Glamp.Models
     [Serializable]
     public class Campgrounds
     {
-
-
         public string FacilityName
         {
             get { return facilityName; }
