@@ -5,21 +5,36 @@
 
 
 <style>
-    #ddmenu{
-        display:flex;
+
+    .ddmenu {
+        display: flex;
        
     }
+    .ddselect {  
+        float: left;
+        padding: 5px;
+        text-align:center;
+    }
+    
 
 </style>
-    <div class="form-group" id="ddmenu">
+    <div class="form-group ddmenu" >
         
-            <form asp-controller="Campgrounds" asp-action="Index" method="post">
+        <form asp-controller="Campgrounds" asp-action="Index" method="post">
+            <div class="ddselect text-light">
                
-                    <select class="custom-select" asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="selectState"></select>
-
-                    <select class="custom-select" asp-items="@(new SelectList(Model.activityDictionary, "Value", "Key"))" asp-for="selectActivity  "></select>
+                <select class="custom-select" asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="selectState"></select>
+            </div>
+            <div class="ddselect text-light">
                 
-                <input class="form-control form-control-sm" type="submit" value="Submit" />
-            </form>
+                <select class="custom-select" asp-items="@(new SelectList(Model.activityDictionary, "Value", "Key"))" asp-for="selectActivity  "></select>
+            </div>
+            <div class="ddselect">
+                <input class="ddselect btn btn-success" type="submit" value="Submit" />
+            </div>
+            <div class="ddselect">
+                <a href="#list" class="btn btn-success" onclick="toggle_visibility('list')">List View</a>
+            </div>
+        </form>
         </div>
         
