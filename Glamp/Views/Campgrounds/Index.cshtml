@@ -30,14 +30,22 @@
     #list {
         display: flex;
         justify-content: center;
+        align-content:center;
+        align-items:center;
         display:none;
         
     }
 
     .select-menu {
-        background-color: #000000;
+        /*background-color: #000000;*/
         border-radius: 5px;
-        opacity: 0.6;
+        background: rgba(0, 0, 0, 0.6);
+    }
+    .menu-list {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
     }
 </style>
 
@@ -55,7 +63,7 @@
                 
                 <div class="container-fluid wow fadeIn select-menu">
                     <div class=" p-3 mb-2  text-white text-left">
-                        <p>Choose State and Type of Campground to find your next camping spot!</p>
+                        <h6>Choose State and Type of Campground to find your next camping spot!</h6>
                         <!--DropDown Menu-->
                         <partial name="_DropDownMenu" model='new Campgrounds()' />
 
@@ -141,8 +149,8 @@
 </div>
 <!-- Mask & flexbox options-->
 
-<div class="container-fluid" id="list">
-    <div class="container-sm align-content-center" style="width: 75%">
+<div class="container " id="list">
+    <div class="container-fluid " style="width: 75%">
 
         <table class="table">
             <tr><th><h2>Campgrounds</h2></th></tr>
