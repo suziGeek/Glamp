@@ -15,7 +15,7 @@
 
     <link href="~/css/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="~/css/site.css" />
+   @* <link rel="stylesheet" href="~/css/site.css" />*@
     <!-- Google Maps -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
@@ -79,63 +79,67 @@
     </nav>
     <!--End Nav-->
     <!--Main layout-->
+    <div class="content-container">
 
-    @RenderBody()
+        @RenderBody()
 
-    <!--Footer-->
-    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+        <!--Footer-->
+        <div class="push"></div>
+        </div>
+        <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-        <!--Call to action-->
-        <div class="pt-4 align-content-center">
-            <div class="align-content-center">
-               
+            <!--Call to action-->
+            <div class="pt-4 align-content-center">
+                <div class="align-content-center">
+
+                </div>
             </div>
-        </div>
-        <!--/.Call to action-->
+            <!--/.Call to action-->
 
-        <hr class="my-4">
+            <hr class="my-4">
 
-        <!-- Social icons -->
-        <div class="pb-4 text-light">
-            Another menu Here.
-        </div>
-        <!-- Social icons -->
-        <!--Copyright-->
-        <div class="footer-copyright py-3 text-light">
-
-
-            &copy; 2020 - Glamper.io - <a class="text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <!-- Social icons -->
+            <div class="pb-4 text-light">
+                Another menu Here.
+            </div>
+            <!-- Social icons -->
+            <!--Copyright-->
+            <div class="footer-copyright py-3 text-light">
 
 
-        </div>
-        <!--/.Copyright-->
-
-    </footer>
-    <!--/.Footer-->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="/js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="/js/mdb.min.js"></script>
-
-    <!-- Initializations -->
-    <script type="text/javascript">
-        // Animations initialization
-        new WOW().init();
-    </script>
+                &copy; 2020 - Glamper.io - <a class="text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 
 
+            </div>
+            <!--/.Copyright-->
 
-    @*<script src="@Url.Content("~/Scripts/jquery.min.js")"></script>*@
+        </footer>
 
-    <script src="~/js/jquery.scrolly.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+        <!--/.Footer-->
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="/js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="/js/mdb.min.js"></script>
+
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
+
+
+
+        @*<script src="@Url.Content("~/Scripts/jquery.min.js")"></script>*@
+
+        <script src="~/js/jquery.scrolly.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
 </body>
 </html>
