@@ -3,6 +3,15 @@
 /*Adding btop level styels*/
 
 
+
+
+
+
+
+
+
+
+
 /* Navbar animation */
 .navbar {
   background-color: rgba(0, 0, 0, 0.3); }
@@ -23,13 +32,13 @@
 
 .page-footer,
 .push {
-    height: 170px;
+    height: 200px;
 }
 
 .content-container {
     min-height: 100%;
-    /* Equal to height of footer */
-    /* But also accounting for potential margin-bottom of last child */
+     Equal to height of footer 
+     But also accounting for potential margin-bottom of last child 
     margin-bottom: -200px;
 }
 
