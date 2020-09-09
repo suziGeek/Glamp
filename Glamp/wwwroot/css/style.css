@@ -23,7 +23,7 @@
 
 .page-footer,
 .push {
-    height: 200px;
+    height: 170px;
 }
 
 .content-container {
@@ -31,6 +31,18 @@
     /* Equal to height of footer */
     /* But also accounting for potential margin-bottom of last child */
     margin-bottom: -200px;
+}
+
+.product-container {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+}
+
+.con-height{
+    height:100%;
 }
 
 
