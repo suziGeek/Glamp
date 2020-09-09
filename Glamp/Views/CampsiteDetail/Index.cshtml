@@ -38,7 +38,8 @@
 
 <div class="container-fluid">
     <div class="container" style="width:75%">
-        <div class="product-container">
+        <div class="product-container flex-column">
+
             <p>@Model.facility</p>
             <ul>
 
@@ -59,12 +60,12 @@
 
             </ul>
 
-            <div class="btn-div">
+            <div class="btn-div m-2">
                 @{
                     var user = Context.User.Identity.Name;
                 }
                 @if (user == null)
-                {<a class="btn btn-outline-success" asp-area="Identity" asp-page="/Account/Login">Login to add to Favorites</a> }
+                {<a class="btn btn-success" asp-area="Identity" asp-page="/Account/Login">Login to add to Favorites</a> }
                 else
                 {
                     @using (Html.BeginForm("InsertFavoriteToDatabase", "Favorites", "Post"))
@@ -77,8 +78,9 @@
                 }
 
             </div>
-
-            <a href=@Model.fullReservationUrl>Make reservation</a>
+            <div class="btn-div m-2">
+                <a class="btn btn-success" href=@Model.fullReservationUrl>Make reservation!</a>
+            </div>
         </div>
     </div>
 </div>
