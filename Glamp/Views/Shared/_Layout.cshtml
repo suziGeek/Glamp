@@ -24,118 +24,113 @@
 
 </head>
 <body>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+            <div class="container">
+                <!-- Brand -->
 
-    <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-        <div class="container">
-            <!-- Brand -->
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Glamper</a>
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Glamper</a>
-            <!-- Collapse -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Links -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <!-- Left -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Campgrounds" asp-action="Index">Home</a>
-                        <span class="sr-only">(current)</span>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Campgrounds" asp-action="Index">Campgrounds</a>
-                    </li>
-                    @{
-                        var user = Context.User.Identity.Name;
-                    }
-                    @if (user != null)
-
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Favorites" asp-action="Index">Favorite</a>
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Campgrounds" asp-action="Index">Home</a>
+                            <span class="sr-only">(current)</span>
                         </li>
-                    }
 
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Campgrounds" asp-action="Index">Campgrounds</a>
+                        </li>
+                        @{
+                            var user = Context.User.Identity.Name;
+                        }
+                        @if (user != null)
+
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Favorites" asp-action="Index">Favorite</a>
+                            </li>
+                        }
+
+                    </ul>
 
 
 
-                <!-- Right -->
-                <ul class="navbar-nav nav-flex-icons">
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
 
-                    <li class="nav-item">
+                        <li class="nav-item">
 
-                        <partial name="_LoginPartial" />
-                    </li>
-                </ul>
+                            <partial name="_LoginPartial" />
+                        </li>
+                    </ul>
 
 
+                </div>
             </div>
+        </nav>
+        <!--End Nav-->
+        <!--Main layout-->
+        <div class="my-main">
+
+            @RenderBody()
+
+            <!--Footer-->
+
         </div>
-    </nav>
-    <!--End Nav-->
-    <!--Main layout-->
-    <div class="main">
+        <footer class="page-footer text-center font-small ">
 
-        @RenderBody()
-
-        <!--Footer-->
-        <div class="push"></div>
-        </div>
-        <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-           
-            
-           
-
-            <hr class="my-4">
-
-            
-            <div class="pb-4 text-light">
+            <div class="pb-4 text-light ">
+                <hr >
                 Plan your perfect get away!
             </div>
-            
+
             <!--Copyright-->
-            <div class="footer-copyright py-3 text-light">
+            <div class="footer-copyright py-3 text-light red-outline">
 
 
                 &copy; 2020 - Glamper.io - <a class="text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 
 
             </div>
+
             <!--/.Copyright-->
-
         </footer>
+    </div>
 
-        <!--/.Footer-->
-        <!-- SCRIPTS -->
-        <!-- JQuery -->
-        <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="/js/popper.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="/js/mdb.min.js"></script>
+    <!--/.Footer-->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/mdb.min.js"></script>
 
-        <!-- Initializations -->
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
-        </script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
 
 
 
-        @*<script src="@Url.Content("~/Scripts/jquery.min.js")"></script>*@
+    @*<script src="@Url.Content("~/Scripts/jquery.min.js")"></script>*@
 
-        <script src="~/js/jquery.scrolly.min.js"></script>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @RenderSection("Scripts", required: false)
+    <script src="~/js/jquery.scrolly.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
