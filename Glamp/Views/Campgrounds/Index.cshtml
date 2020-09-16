@@ -24,18 +24,18 @@
         width: auto;
         display: inline;
     }
+
     .topspace {
-       padding-top:80px;
-       padding-bottom:20px;
-      
+        padding-top: 80px;
+        padding-bottom: 20px;
     }
+
     #list {
         display: flex;
         justify-content: center;
-        align-content:center;
-        align-items:center;
-        display:none;
-        
+        align-content: center;
+        align-items: center;
+        display: none;
     }
 
     .select-menu {
@@ -43,6 +43,7 @@
         border-radius: 5px;
         background: rgba(0, 0, 0, 0.6);
     }
+
     .menu-list {
         display: flex;
         justify-content: center;
@@ -62,7 +63,7 @@
 
             <!--drop down menu area-->
             <div>
-                
+
                 <div class="container-fluid wow fadeIn select-menu">
                     <div class=" p-3 mb-2  text-white text-left">
                         <h6>Choose State and Type of Campground to find your next camping spot!</h6>
@@ -147,8 +148,85 @@
 
     </div>
     <!-- Content -->
-    hello!!
+
 </div>
 <!-- Mask & flexbox options-->
+<div class="container-fluid" id="list">
+    <div class="conatainer-sm align-content-center" style="width: 75%">
 
+        <table class="table">
+            <tr><th><h2>Campgrounds</h2></th></tr>
+            <tr>
+
+                <th>Name</th>
+                <th>Longitude</th>
+                <th>Latidtude</th>
+                <td>contractID</td>
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>@item.FacilityName </td>
+                <td>@item.Longitude</td>
+                <td>@item.Latitude</td>
+                <td>@item.ContractID</td>
+
+                <td>
+                    @*<a class="btn btn-outline-success" href=/Product/ViewProduct/@product.facilityID>Learn More</a>*@
+
+                    <a class="navbar-brand" asp-area="" asp-route-campId=@item.FacilityID asp-route-contractId=@item.ContractID asp-controller="CampsiteDetail" asp-action="Index">Campsite Detail</a>
+
+                </td>
+
+
+
+            </tr>
+
+            }
+        </table>
+    </div>
+</div>
+<div class="container-fluid justify-content-center" id="list">
+    <div class="container justify-content-center" style="width: 75%">
+
+        <table class="table">
+            <tr><th><h2>Campgrounds</h2></th></tr>
+            <tr>
+
+                <th>Name</th>
+                <th>Longitude</th>
+                <th>Latidtude</th>
+                <td>contractID</td>
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>@item.FacilityName </td>
+                <td>@item.Longitude</td>
+                <td>@item.Latitude</td>
+                <td>@item.ContractID</td>
+
+                <td>
+                    @*<a class="btn btn-outline-success" href=/Product/ViewProduct/@product.facilityID>Learn More</a>*@
+
+                    <a class="navbar-brand" asp-area="" asp-route-campId=@item.FacilityID asp-route-contractId=@item.ContractID asp-controller="CampsiteDetail" asp-action="Index">Campsite Detail</a>
+
+                </td>
+
+
+
+            </tr>
+
+            }
+        </table>
+    </div>
+</div>
 

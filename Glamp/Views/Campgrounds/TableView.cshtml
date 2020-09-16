@@ -36,4 +36,43 @@
             }
         </table>
     </div>
+</div>
+<div class="container-fluid" id="list">
+    <div class="conatainer-sm align-content-center" style="width: 75%">
+
+        <table class="table">
+            <tr><th><h2>Campgrounds</h2></th></tr>
+            <tr>
+
+                <th>Name</th>
+                <th>Longitude</th>
+                <th>Latidtude</th>
+                <td>contractID</td>
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.FacilityName </td>
+                    <td>@item.Longitude</td>
+                    <td>@item.Latitude</td>
+                    <td>@item.ContractID</td>
+
+                    <td>
+                        @*<a class="btn btn-outline-success" href=/Product/ViewProduct/@product.facilityID>Learn More</a>*@
+
+                        <a class="navbar-brand" asp-area="" asp-route-campId=@item.FacilityID asp-route-contractId=@item.ContractID asp-controller="CampsiteDetail" asp-action="Index">Campsite Detail</a>
+
+                    </td>
+
+
+
+                </tr>
+
+            }
+        </table>
+    </div>
 </div> 

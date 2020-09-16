@@ -14,10 +14,19 @@ namespace Glamp.Controllers
         public IActionResult Index(string selectState, string selectActivity)
         {
             var client = new HttpClient();
-            var quote = new CampgroundsRepository(client);    
+            var quote = new CampgroundsRepository(client);
+
+            try { 
             var campground = quote.GetCampgrounds(selectState, selectActivity);
 
-            return View(campground);
+                return View(campground);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
         }
 
     }
