@@ -16,6 +16,11 @@ namespace Glamp.Controllers
             var client = new HttpClient();
             var quote = new CampgroundsRepository(client);
 
+            if(selectState == null)
+            {
+                selectState = "AZ";
+                    selectActivity = "3001"; }
+
             try { 
             var campground = quote.GetCampgrounds(selectState, selectActivity);
 

@@ -24,10 +24,13 @@
             <div class="ddselect text-light">
                
                 <select class="custom-select" asp-items="@(new SelectList(Enum.GetValues(typeof(DropDownMenu.States))))" asp-for="selectState"></select>
+               
+            
             </div>
             <div class="ddselect text-light">
                 
                 <select class="custom-select" asp-items="@(new SelectList(Model.activityDictionary, "Value", "Key"))" asp-for="selectActivity  "></select>
+               
             </div>
             <div class="ddselect">
                 <input class="ddselect btn btn-success" type="submit" value="Submit" />

@@ -113,20 +113,21 @@ namespace Glamp.Models
         public string user { get; set; }
         public string fullReservationUrl { get; set; }
 
-
+        
         public Dictionary<string, string> activityDictionary = new Dictionary<string, string>
                 {
 
-                  {  "RVSites","2001" },
+                  {  "RV Sites","2001" },
                   {  "Cabins","10001" },
                   {  "Tent","2003" },
                   { "Trailer","2002"},
-                  { "GroupSite","9002"},
-                  { "DayUse","9001"},
-                  { "HorseSite","3001"},
-                  {"BoatSite","2004"}
+                  { "Group Site","9002"},
+                  { "Day Use","9001"},
+                  { "Horse Site","3001"},
+                  {"Boat Site","2004"}
                 };
 
+       
         public Dictionary<string, string> selectActivity { get; set; }
 
 
