@@ -67,6 +67,9 @@
                 <div class="container-fluid wow fadeIn select-menu">
                     <div class=" p-3 mb-2  text-white text-left">
                         <h6>Choose State and Type of Campground to find your next camping spot!</h6>
+                        @{ if (Model.Count == 0)
+                            {<h3>Sorry! There are none in that location. Make another choice!</h3> } }
+
                         <!--DropDown Menu-->
                         <partial name="_DropDownMenu" model='new Campgrounds()' />
 
