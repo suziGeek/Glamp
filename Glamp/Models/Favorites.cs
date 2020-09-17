@@ -17,6 +17,7 @@ namespace Glamp.Models
         public string facilityID { get; set; }
         public string CampsiteName { get; set; }
         public string campID { get; set; }
+        public string ContractID { get; set; }
 
 
     }

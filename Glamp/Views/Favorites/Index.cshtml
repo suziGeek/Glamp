@@ -30,19 +30,21 @@
 
             @foreach (var favorite in Model)
             {
-                <tr>
-                    <td> @favorite.CampsiteName</td>
-                    <td>@favorite.campID</td>
+            <tr>
 
-                    <td>
-                        @using (Html.BeginForm("DeleteFavorite", "Favorites", "Post"))
-                        {
-                            <input type="hidden" asp-for="@favorite.campID" value="@favorite.campID" />
-                            <input type="hidden" asp-for="@favorite.user" value="@favorite.user" />
-                            <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete Favorite" />
-                        }
-                    </td>
-                </tr>
+            @*<td><a class="navbar-brand" asp-area="" asp-route-campId=@favorite.campID asp-route-contractId=@favorite.ContractID asp-controller="CampsiteDetail" asp-action="Index">@favorite.CampsiteName</a></td>*@
+            <td> @favorite.CampsiteName</td>
+            <td>@favorite.campID</td>
+
+            <td>
+                @using (Html.BeginForm("DeleteFavorite", "Favorites", "Post"))
+                {
+                    <input type="hidden" asp-for="@favorite.campID" value="@favorite.campID" />
+                    <input type="hidden" asp-for="@favorite.user" value="@favorite.user" />
+                    <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete Favorite" />
+                }
+            </td>
+        </tr>
 
             }
         </table>
