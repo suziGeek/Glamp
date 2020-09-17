@@ -31,9 +31,16 @@ namespace Glamp.Models
 
         public void InsertFavorite(string facilityID, string facility, string user, string contractID)
         {
-             _conn.Execute("INSERT INTO Favorites (campId, campsiteName, user, contractID) VALUES (@facilityID, @facility, @user, @contractID);",
-                new { facilityID = facilityID, facility = facility, user = user, contractID = contractID });
+           //Checking to see if record exists to prevent duplicates.
 
+               var exists = _conn.ExecuteScalar<bool>("select count(1) from Favorites where campID = @facilityID", new { facilityID });
+
+            if (!exists)
+            {
+
+                _conn.Execute("INSERT INTO Favorites (campId, campsiteName, user, contractID) VALUES (@facilityID, @facility, @user, @contractID);",
+                    new { facilityID = facilityID, facility = facility, user = user, contractID = contractID });
+            }
         }
 
         public void DeleteFavorite(Favorites favorite)
