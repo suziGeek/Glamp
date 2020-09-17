@@ -7,7 +7,7 @@ namespace Glamp.Models
 {
     public interface IFavoritesRepository
     {
-        public void InsertFavorite(string facilityID, string facilityName, string user);
+        public void InsertFavorite(string facilityID, string facilityName, string user, string contractID);
         public IEnumerable<Favorites> GetAllFavorites(string user);
         public void DeleteFavorite(Favorites favorite);
     }

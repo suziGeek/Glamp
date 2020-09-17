@@ -70,6 +70,7 @@
                 {
                     @using (Html.BeginForm("InsertFavoriteToDatabase", "Favorites", "Post"))
                     {
+                        <input type="hidden" asp-for="contractID" value="@Model.contractID" />
                         <input type="hidden" asp-for="facility" value="@Model.facility" />
                         <input type="hidden" asp-for="facilityID" value="@Model.facilityID" />
                         <input type="hidden" asp-for="user" value="@user" />

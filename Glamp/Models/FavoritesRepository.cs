@@ -29,10 +29,10 @@ namespace Glamp.Models
 
         }
 
-        public void InsertFavorite(string facilityID, string facility, string user)
+        public void InsertFavorite(string facilityID, string facility, string user, string contractID)
         {
-             _conn.Execute("INSERT INTO Favorites (campId, campsiteName, user) VALUES (@facilityID, @facility, @user);",
-                new { facilityID = facilityID, facility = facility, user = user });
+             _conn.Execute("INSERT INTO Favorites (campId, campsiteName, user, contractID) VALUES (@facilityID, @facility, @user, @contractID);",
+                new { facilityID = facilityID, facility = facility, user = user, contractID = contractID });
 
         }
 
