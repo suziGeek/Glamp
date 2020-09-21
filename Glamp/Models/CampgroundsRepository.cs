@@ -25,20 +25,25 @@ namespace Glamp.Models
 
             XDocument xml = XDocument.Parse(campResponse);
             //if theres only one result resultset is not a node - only result is - so throws an error...need to fix.
-            List<Campgrounds> nodeList = xml.Descendants("resultset")
-                                  .Descendants("result")
-                                  //.Where(x => x.Element("facilityID") != null && x.Element("facilityID") != null)
-                                  .Select(x => new Campgrounds
-                                  {
-                                      facilityName = x.Attribute("facilityName").Value,
-                                      facilityID = x.Attribute("facilityID").Value,
-                                      state = x.Attribute("state").Value,
-                                      latitude = decimal.Parse(x.Attribute("latitude").Value),
-                                      longitude = decimal.Parse(x.Attribute("longitude").Value),
-                                      contractID = x.Attribute("contractID").Value,
-                                  }).ToList<Campgrounds>();
-
-            return nodeList;
+            try
+            {
+                List<Campgrounds> nodeList = xml.Descendants("resultset")
+                                      .Descendants("result")
+                                      .Where(x => x.Attribute("latitude") != null)
+                                      .Select(x => new Campgrounds
+                                      {
+                                          facilityName = x.Attribute("facilityName").Value,
+                                          facilityID = x.Attribute("facilityID").Value,
+                                          state = x.Attribute("state").Value,
+                                          latitude = decimal.Parse(x.Attribute("latitude").Value),
+                                          longitude = decimal.Parse(x.Attribute ("longitude").Value),
+                                          contractID = x.Attribute("contractID").Value,
+                                      }).ToList<Campgrounds>();
+                return nodeList;
+            }
+            catch (System.Xml.XmlException e)
+            { throw e; }
+            
 
         }
 
