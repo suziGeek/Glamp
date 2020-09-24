@@ -35,7 +35,7 @@ namespace Glamp.Models
             {
                 List<Campgrounds> nodeList = xml.Descendants("resultset")
                                       .Descendants("result")
-                                      .Where(x => (string)x.Element("latitude") != "" || (string)x.Element("longitude")!= "" || (string)x.Element("facilityName") != "")
+                                      //.Where(x => (string)x.Element("latitude") != "" || (string)x.Element("longitude")!= "" || (string)x.Element("facilityName") != "")
                                       .Select(x => new Campgrounds
                                       {
                                           facilityName = x.Attribute("facilityName").Value,
@@ -47,6 +47,7 @@ namespace Glamp.Models
                                           contractID = x.Attribute("contractID").Value,
                                       }).ToList<Campgrounds>();
 
+                //pagination beginnings
                 var page = 1;
                 var pageSize = 50;
                 nodeList = nodeList.Skip(page - 1 * pageSize).Take(pageSize).ToList<Campgrounds>();
