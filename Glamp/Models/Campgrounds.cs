@@ -26,13 +26,13 @@ namespace Glamp.Models
             set { state = value; }
         }
 
-        public decimal Latitude
+        public decimal? Latitude
         {
             get { return latitude; }
             set { latitude = value; }
         }
 
-        public decimal Longitude
+        public decimal? Longitude
         {
             get { return longitude; }
             set { longitude = value; }
@@ -49,10 +49,10 @@ namespace Glamp.Models
         public string facilityName;
         public string facilityID;
         public string state;
-        public decimal latitude;
-        public decimal longitude;
+        public decimal? latitude;
+        public decimal? longitude;
 
-        public Campgrounds(string facilityName, string facilityID, string state, decimal latitude, decimal longitude, string contractID)
+        public Campgrounds(string facilityName, string facilityID, string state, decimal? latitude, decimal? longitude, string contractID)
         {
             this.facilityName = facilityName;
             this.facilityID = facilityID;
@@ -117,17 +117,17 @@ namespace Glamp.Models
         public Dictionary<string, string> activityDictionary = new Dictionary<string, string>
                 {
 
-                  {  "RV Sites","2001" },
-                  {  "Cabins","10001" },
-                  {  "Tent","2003" },
-                  { "Trailer","2002"},
-                  { "Group Site","9002"},
-                  { "Day Use","9001"},
-                  { "Horse Site","3001"},
-                  {"Boat Site","2004"}
+                  {"RVSites","2001"},
+                  {"Cabins","10001"},
+                  {"Tent","2003"},
+                  {"Trailer","2002"},
+                  {"GroupSite","9002"},
+                  {"DayUse","9001"},
+                  {"HorseSite","3001"},
+                  {"BoatSite","2004"}
                 };
 
-       
+        [BindProperty]
         public Dictionary<string, string> selectActivity { get; set; }
 
 

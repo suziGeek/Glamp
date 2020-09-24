@@ -14,15 +14,17 @@ namespace Glamp.Controllers
         public IActionResult Index(string selectState, string selectActivity)
         {
             var client = new HttpClient();
-            var quote = new CampgroundsRepository(client);
+            var repo = new CampgroundsRepository(client);
 
             if(selectState == null)
             {
                 selectState = "AZ";
-                    selectActivity = "3001"; }
+                selectActivity = "3001";
+            }
 
-            try { 
-            var campground = quote.GetCampgrounds(selectState, selectActivity);
+            try 
+            { 
+            var campground = repo.GetCampgrounds(selectState, selectActivity);
 
                 return View(campground);
             }
