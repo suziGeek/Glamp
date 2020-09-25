@@ -24,10 +24,7 @@ namespace Glamp.Models
             string campUrl = $"http://api.amp.active.com/camping/campgrounds/?pstate={selectState}&siteType={selectActivity}&api_key=hcgj5x79d9wren68k2pj5nv9";
             var campResponse = _client.GetStringAsync(campUrl).Result;
 
-            //WebClient myWebClient = new WebClient();
-            //byte[] data = myWebClient.DownloadData(uri);
-
-            //string xmlContents = Encoding.UTF8.GetString(data);
+           
 
             XDocument xml = XDocument.Parse(campResponse);
             //if theres only one result resultset is not a node - only result is - so throws an error...need to fix.
