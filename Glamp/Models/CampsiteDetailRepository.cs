@@ -35,11 +35,13 @@ namespace Glamp.Models
         }
 
 
-
+        
         public CampsiteDetail GetCamperDetail(string campId, string contractID)
         {
             string campUrl = $"https://www.reserveamerica.com/campgroundDetails.do?contractCode={contractID}&parkId={campId}&api_key=hcgj5x79d9wren68k2pj5nv9&xml=true";
             var campResponse = _client.GetStringAsync(campUrl).Result;
+
+            //need to add a try catch in here for 403's etc...
 
             XElement root = XElement.Parse(campResponse);
             XElement newTree = new XElement("Root",

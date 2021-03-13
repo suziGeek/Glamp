@@ -29,7 +29,7 @@ namespace Glamp.Models
 
         }
 
-        public void InsertFavorite(string facilityID, string facility, string user, string contractID)
+        public void InsertFavorite(string facilityID, string facility, string user, string contractID, double longitude, double latitude)
         {
            //Checking to see if record exists to prevent duplicates.
 
@@ -38,8 +38,8 @@ namespace Glamp.Models
             if (!exists)
             {
 
-                _conn.Execute("INSERT INTO Favorites (campId, campsiteName, user, contractID) VALUES (@facilityID, @facility, @user, @contractID);",
-                    new { facilityID = facilityID, facility = facility, user = user, contractID = contractID });
+                _conn.Execute("INSERT INTO Favorites (campId, campsiteName, user, contractID, longitude, latitude) VALUES (@facilityID, @facility, @user, @contractID, @longitude, @latitude);",
+                    new { facilityID = facilityID, facility = facility, user = user, contractID = contractID, longitude = longitude, latitude = latitude });
             }
         }
 

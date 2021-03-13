@@ -12,6 +12,49 @@
         height: 100%;
     }
 </style>
+<style>
+    #myDiv {
+        height: 500px;
+        width: 100%;
+
+    }
+
+    /* Bootstrap Css Map Fix*/
+    #mainBody #map img {
+        max-width: none;
+    }
+    /* Bootstrap Css Map Fix*/
+    #mainBody #map label {
+        width: auto;
+        display: inline;
+    }
+
+    .topspace {
+        padding-top: 80px;
+        padding-bottom: 20px;
+    }
+
+    #list {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        display: none;
+    }
+
+    .select-menu {
+        /*background-color: #000000;*/
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .menu-list {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+</style>
 
 
 
@@ -19,34 +62,104 @@
     <div class="align-content-center" style="width: 75%">
         <h2>Favorite Campsites</h2>
 
+        @* Favorites Map *@
+        <div class="container-md text-center text-md-center red">
 
-        <table class="table align-content-center">
-            <tr>
-                <th>Name</th>
-                <th>ID</th>
+            <!--Card-->
+            <!--Card content-->
+            <div id="myDiv">
 
 
-            </tr>
+                <!-- Map -->
+                <script type="text/javascript">
 
-            @foreach (var favorite in Model)
-            {
-            <tr>
 
-            <td><a class="navbar-brand" asp-area="" asp-route-campId=@favorite.campID asp-route-contractId=@favorite.ContractID asp-controller="CampsiteDetail" asp-action="Index">@favorite.CampsiteName</a></td>
-            <td> @favorite.CampsiteName</td>
-            <td>@favorite.campID</td>
+                                // When the user clicks the marker, an info window opens.
+                        function initMap() {
 
-            <td>
-                @using (Html.BeginForm("DeleteFavorite", "Favorites", "Post"))
+                                    var bounds = new google.maps.LatLngBounds();
+
+                                    var shape = "http://maps.google.com/mapfiles/kml/pal2/icon2.png";
+
+                                                const map = new google.maps.Map(document.getElementById("myDiv"), {
+                                                    //zoom: 8,
+                                                    //center: { lat: -33, lng: 151 },
+                                                });
+
+                                        var infowindow = new google.maps.InfoWindow({
+                                        size: new google.maps.Size(50, 50) // too small
+                                        });
+
+
+
+                                    function makeInfoWindow(marker, content) {
+                                        google.maps.event.addListener(marker, 'click', function () {
+                                            infowindow.setContent(content);
+                                            infowindow.open(map, marker);
+                                        });
+                                    }
+
+                                    @foreach (var favorite in Model)
+                                    {
+                                             <text>
+
+                                        var marker = new google.maps.Marker({
+                                                    position: { lat: @favorite.Latitude, lng: @favorite.Longitude },
+                                            map: map,
+                                            title: '@favorite.CampsiteName',
+                                            icon: shape,
+
+                                        });
+
+                                    //input marker postions to set the bounding box for centering map.
+                                    bounds.extend(marker.position);
+
+                            makeInfoWindow(marker, '<a class="navbar-brand" asp-area="" asp-route-campId=@favorite.campID asp-route-contractId=@favorite.ContractID asp-controller="CampsiteDetail" asp-action="Index">@favorite.CampsiteName</a><br>Learn More');
+
+                                            </text>   }
+                                        //creates a zoom and centering based off of marker locations
+                                        map.fitBounds(bounds);
+                                    }
+/*----------------------------------------------------------------------------*/
+                </script>
+
+                <!-- Form -->
+
+            </div>
+
+
+            <table class="table align-content-center">
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+
+
+                </tr>
+
+                @foreach (var favorite in Model)
                 {
-                    <input type="hidden" asp-for="@favorite.campID" value="@favorite.campID" />
-                    <input type="hidden" asp-for="@favorite.user" value="@favorite.user" />
-                    <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete Favorite" />
-                }
-            </td>
-        </tr>
+                    <tr>
 
-            }
-        </table>
+                        <td><a class="navbar-brand" asp-area="" asp-route-campId=@favorite.campID asp-route-contractId=@favorite.ContractID asp-controller="CampsiteDetail" asp-action="Index">@favorite.CampsiteName</a></td>
+                        <td> @favorite.CampsiteName</td>
+                        <td>@favorite.campID</td>
+
+                        <td>
+                            @using (Html.BeginForm("DeleteFavorite", "Favorites", "Post"))
+                            {
+                                <input type="hidden" asp-for="@favorite.campID" value="@favorite.campID" />
+                                <input type="hidden" asp-for="@favorite.user" value="@favorite.user" />
+                                <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete Favorite" />
+                            }
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+
+
     </div>
+
+
 </div>

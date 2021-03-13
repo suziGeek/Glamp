@@ -25,10 +25,11 @@ namespace Glamp.Controllers
             return View(favorites);
         }
 
-        public IActionResult InsertFavoriteToDatabase(string facilityID, string facility, string user, string contractID)
+        public IActionResult InsertFavoriteToDatabase(string facilityID, string facility, string user, string contractID, double Longitude, double Latitude)
         {
 
-            repo.InsertFavorite(facilityID, facility, user, contractID);
+            repo.InsertFavorite(facilityID, facility, user, contractID, Longitude, Latitude
+                );
 
             return RedirectToAction("Index");
         }

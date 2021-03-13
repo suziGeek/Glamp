@@ -181,7 +181,12 @@
                 <td>
                     @*<a class="btn btn-outline-success" href=/Product/ViewProduct/@product.facilityID>Learn More</a>*@
 
-                    <a class="navbar-brand" asp-area="" asp-route-campId=@item.FacilityID asp-route-contractId=@item.ContractID asp-controller="CampsiteDetail" asp-action="Index">Campsite Detail</a>
+                    <a class="navbar-brand" asp-area="" 
+                       asp-route-campId=@item.FacilityID 
+                       asp-route-contractId=@item.ContractID 
+                       asp-route-longitude=@item.Longitude
+                       asp-route-latitude=@item.Latitude 
+                       asp-controller="CampsiteDetail" asp-action="Index">Campsite Detail</a>
 
                 </td>
 

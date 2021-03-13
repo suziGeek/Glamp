@@ -18,6 +18,8 @@ namespace Glamp.Models
         public string CampsiteName { get; set; }
         public string campID { get; set; }
         public string ContractID { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
 
 
     }

@@ -12,14 +12,17 @@ namespace Glamp.Models
 
         }
 
-        public CampsiteDetail(string facilityName, string facilityID, string contractID)
+        public CampsiteDetail(string facilityName, string facilityID, string contractID, double longitude, double latitude)
         {
             this.facilityName = facilityName;
             this.facilityID = facilityID;
-            
+            this.longitude = longitude;
+            this.latitude = latitude;
             this.contractID = contractID;
         }
 
+        public double latitude { get; set; }
+        public double longitude { get; set; }
         public string contractID { get; set; }
         public string campId { get; set; }
         public string alert { get; set; }
