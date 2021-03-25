@@ -11,6 +11,7 @@ namespace Glamp.Controllers
 {
     public class CampgroundsController : Controller
     {
+
         public IActionResult Index(string selectState, string selectActivity)
         {
             var client = new HttpClient();
