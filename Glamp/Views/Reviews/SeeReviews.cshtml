@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Reviews>
+@using System.Web
+
+@using System
+@using System.Xml
+
+
+
+
+
+    <tr>
+        @foreach(var item in Model)
+        { 
+        <td>@item.Title </td>
+
+
+        <td>
+            @item.Description
+
+        </td>
+        }
+    </tr>

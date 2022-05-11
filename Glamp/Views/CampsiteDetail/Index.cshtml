@@ -31,6 +31,10 @@
 </style>
 
 @{
+    var user = Context.User.Identity.Name;
+}
+
+@{
     ViewData["Title"] = "Campsite Details";
 }
 
@@ -59,11 +63,24 @@
                 }
 
             </ul>
+            <div>
+                @*ViewData["id"] =  Model.facilityID;
+
+
+        <partial name="_reviews" model='new Reviews()' view-data="ViewData" />*@
+
+                @*Html.Action("Reviews", new { FacilityID = Model.facilityID })*@
+
+                @*Html.RenderPartial("ViewReviews", "Reviews", ViewData["id"]);*@
+               
+                <ul>
+                    <li> @Html.Display("Reviews", new { FacilityID = Model.facilityID })</li>
+                </ul>
+
+            </div>
 
             <div class="btn-div m-2">
-                @{
-                    var user = Context.User.Identity.Name;
-                }
+
                 @if (user == null)
                 {<a class="btn btn-success" asp-area="Identity" asp-page="/Account/Login">Login to add to Favorites</a> }
                 else
@@ -76,6 +93,15 @@
                         <input type="hidden" asp-for="user" value="@user" />
                         <input type="submit" class="btn btn-outline-success" value="Add to favorites" />
                     }
+
+                    <div class="btn-div m-2">
+
+                        <a class="navbar-brand" asp-area="" asp-route-user=@user asp-route-facilityID=@Model.facilityID asp-controller="Reviews" asp-action="Index">Add Review</a>
+                    </div>
+                    <div class="btn-div m-2">
+
+                        <a class="navbar-brand" asp-area="" asp-route-facilityID=@Model.facilityID asp-controller="Reviews" asp-action="SeeReviews">Read Review</a>
+                    </div>
                 }
 
             </div>

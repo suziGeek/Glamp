@@ -32,9 +32,6 @@ namespace Glamp.Controllers
             {
                 throw ex.InnerException;
             }
-
-
         }
-
     }
 }

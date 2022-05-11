@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace Glamp.Models
 {
-    public class CampgroundsRepository
+    public class CampgroundsRepository: ICampgroundRepository
     {
         private HttpClient _client;
 

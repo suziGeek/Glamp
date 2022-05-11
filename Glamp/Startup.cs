@@ -47,6 +47,7 @@ namespace Glamp
                 return conn;
             });
             services.AddTransient<IFavoritesRepository, FavoritesRepository>();
+            services.AddTransient<IReviewsRepository, ReviewsRepository>();
 
 
 

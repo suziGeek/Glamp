@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model Reviews
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<style>
+    .product-container {
+        margin-top: 100px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+    }
+</style>
+
+@{
+    var User = Context.User.Identity.Name;
+    var facilityID = Model.FacilityID;
+}
+
+<div class="container-fluid product-container align-content-center">
+    <div class="align-content-center" style="width: 75%">
+        <h2>Reviews</h2>
+
+
+        <table class="table align-content-center">
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+
+
+            </tr>
+
+
+            <tr>
+
+
+                <td>
+
+
+                    @using (Html.BeginForm("InsertReviewsIntoDatabase", "Reviews", "Post"))
+                    {
+                        <input type="hidden" asp-for="FacilityID" value="@facilityID" />
+                        <input type="hidden" asp-for="User" value="@User" />
+                        <textarea type="text" asp-for="Title"></textarea>
+                        <textarea type="text" asp-for="Description"></textarea>
+                        <input type="submit" class="btn btn-outline-success" value="Add to favorites" />
+                    }
+
+
+
+                </td>
+
+            </tr>
+
+
+        </table>
+    </div>
+</div>

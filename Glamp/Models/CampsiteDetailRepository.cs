@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Glamp.Models
 {
-    public class CampsiteDetailRepository
+    public class CampsiteDetailRepository:ICampsiteDetailRepository
     {
 
         private HttpClient _client;
