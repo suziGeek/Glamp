@@ -2,12 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Glamp.Models
 {
-    public class ReviewsRepository: IReviewsRepository
+    public class ReviewsRepository : IReviewsRepository
     {
 
         private readonly IDbConnection _conn;
@@ -18,9 +16,7 @@ namespace Glamp.Models
             _conn = conn;
         }
 
-       
-
-        public IEnumerable<Reviews>GetAllReviews(string facilityID)
+        public IEnumerable<Reviews> GetAllReviews(string facilityID)
         {
 
             return _conn.Query<Reviews>("SELECT * FROM reviews WHERE facilityID = @facilityID",
@@ -31,17 +27,17 @@ namespace Glamp.Models
 
         }
 
-        public void InsertReview( string user, string title, string description, string facilityID, Guid guid)
+        public void InsertReview(string user, string title, string description, string facilityID, Guid guid)
         {
             //Checking to see if record exists to prevent duplicates.
 
-            var exists = _conn.ExecuteScalar<bool>("select count(1) from Reviews where facilityID = @facilityID and user = @user", new { facilityID, user});
+            var exists = _conn.ExecuteScalar<bool>("select count(1) from Reviews where facilityID = @facilityID and user = @user", new { facilityID, user });
 
             if (!exists)
             {
 
                 _conn.Execute("INSERT INTO reviews (user, title, description, facilityID, GUID) VALUES (@User, @Title, @Description, @facilityID, @guid);",
-                    new { User = user,  Title = title, Description = description, FacilityID = facilityID, guid = guid});
+                    new { User = user, Title = title, Description = description, FacilityID = facilityID, guid = guid });
             }
         }
 

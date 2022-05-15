@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Glamp.Models;
+using Glamp.Controllers;
+using Glamp.Models.Services;
 
 namespace Glamp
 {
@@ -48,6 +50,7 @@ namespace Glamp
             });
             services.AddTransient<IFavoritesRepository, FavoritesRepository>();
             services.AddTransient<IReviewsRepository, ReviewsRepository>();
+            services.AddTransient<ReviewsService>();
 
 
 

@@ -3,9 +3,10 @@
 
 @using System
 @using System.Xml
-
+@using Glamp.Models.Services
 @using Microsoft.AspNetCore.Identity;
 @inject UserManager<IdentityUser> UserManager
+@inject ReviewsService revService
 
 
 
@@ -67,14 +68,22 @@
                 @*ViewData["id"] =  Model.facilityID;
 
 
-        <partial name="_reviews" model='new Reviews()' view-data="ViewData" />*@
+                    <partial name="_reviews" model='new Reviews()' view-data="ViewData" />*@
 
                 @*Html.Action("Reviews", new { FacilityID = Model.facilityID })*@
 
                 @*Html.RenderPartial("ViewReviews", "Reviews", ViewData["id"]);*@
-               
+
                 <ul>
                     <li> @Html.Display("Reviews", new { FacilityID = Model.facilityID })</li>
+                    @{var reviews = revService.GetReviews(Model.facilityID);}
+                    @foreach (var item in reviews)
+            {
+                <li> Reviews: </li>
+                <li>Title:  @item.Title</li>
+                <li>Description:  @item.Description</li>
+            }
+                        
                 </ul>
 
             </div>
